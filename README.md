@@ -20,7 +20,7 @@ Chapter5の全パッケージを以下のコマンドでインストールしま
 
 - Chapter5のリポジトリを入手
   ```
-  git clone https://github.com/
+  git clone https://github.com/At-Home-Book/chapter5.git
   ```
 
 ## 補足情報
