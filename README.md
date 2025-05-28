@@ -12,11 +12,20 @@
 - **[waypoint_navi](waypoint_navi)**: ウェイポイントナビゲーションのサンプルパッケージ
 
 ## インストール(作成中)
+Chapter5で必要なROSパッケージをインストールする．
+- sudo apt install ros-humble-tf-transformations
+
+
+
 Chapter5の全パッケージを以下のコマンドでインストールします．
 - ROSのワークスペースを`~/athome_ws`とする．
   ```
   cd ~/athome_ws/src
   ```
+
+
+
+
 
 - Chapter5のリポジトリを入手
   ```
