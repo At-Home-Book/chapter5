@@ -12,8 +12,8 @@ from tf_transformations import euler_from_quaternion
 class KachakaMove(Node):  # 簡単な移動クラス
     def __init__(self):   # コンストラクタ
         super().__init__('kachaka_move_node')        
-        self.pub = self.create_publisher(Twist, 'cmd_vel', 10)
-        self.sub = self.create_subscription(Odometry, 'odom', self.odom_cb, 10)   
+        self.pub = self.create_publisher(Twist, '/kachaka/manual_control/cmd_vel', 10)
+        self.sub = self.create_subscription(Odometry, '/kachaka/odometry/odometry', self.odom_cb, 10)   
         self.timer = self.create_timer(0.01, self.timer_callback)
         self.x, self.y, self.yaw = 0.0, 0.0, 0.0
         self.x0, self.y0, self.yaw0 = 0.0, 0.0, 0.0
