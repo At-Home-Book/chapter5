@@ -15,7 +15,7 @@
 Chapter5の全パッケージを以下のコマンドでインストールします．
 - ROSのワークスペースを`~/athome_ws`とする．
   ```
-  cd ~/ws/src
+  cd ~/athome_ws/src
   ```
 
 - Chapter5のリポジトリを入手
