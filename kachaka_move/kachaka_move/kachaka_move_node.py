@@ -1,7 +1,8 @@
+# Python 3.10, Numpy 1.23.5: Numpyのバージョンが上がると動かない
 import math
 import sys
 import rclpy
-import tf_transformations
+import tf_transfor#mations
 from rclpy.node import Node   
 from rclpy.executors import ExternalShutdownException    
 from geometry_msgs.msg import Twist  # Twistメッセージ型をインポート
