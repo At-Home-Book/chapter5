@@ -2,19 +2,23 @@
 import math
 import sys
 import rclpy
-import tf_transfor#mations
+import tf_transformations
 from rclpy.node import Node   
 from rclpy.executors import ExternalShutdownException    
 from geometry_msgs.msg import Twist  # Twistメッセージ型をインポート
 from nav_msgs.msg import Odometry    # Odometryメッセージ型をインポート
 from tf_transformations import euler_from_quaternion 
+from rclpy.qos import QoSProfile, QoSReliabilityPolicy #  demu
 
 
 class KachakaMove(Node):  # 簡単な移動クラス
     def __init__(self):   # コンストラクタ
         super().__init__('kachaka_move_node')        
         self.pub = self.create_publisher(Twist, '/kachaka/manual_control/cmd_vel', 10)
-        self.sub = self.create_subscription(Odometry, '/kachaka/odometry/odometry', self.odom_cb, 10)   
+        qos_profile = QoSProfile(depth=10) # demu
+        qos_profile.reliability = QoSReliabilityPolicy.BEST_EFFORT # demu
+        self.sub = self.create_subscription(Odometry, '/kachaka/odometry/odometry', self.odom_cb, qos_profile) # demu
+        # self.sub = self.create_subscription(Odometry, '/kachaka/odometry/odometry', self.odom_cb, 10)  # org
         self.timer = self.create_timer(0.01, self.timer_callback)
         self.x, self.y, self.yaw = 0.0, 0.0, 0.0
         self.x0, self.y0, self.yaw0 = 0.0, 0.0, 0.0
@@ -48,6 +52,7 @@ class KachakaMove(Node):  # 簡単な移動クラス
             self.set_vel(0.25, 0.0)
             return False
         else:
+            print("stop")
             self.set_vel(0.0, 0.0)
             return True
 
